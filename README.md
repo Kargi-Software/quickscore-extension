@@ -1,3 +1,8 @@
+# QuickCard
+
+* **Install:** [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/quickscore/)
+
+
 Multi-sport live scores for football, basketball (NBA), American football (NFL), baseball (MLB), and hockey (NHL), all from one toolbar icon instead of five different sites.
 
 Open the popup and you’ll see today’s games across 90+ competitions, including the World Cup, Champions League, Premier League, La Liga, Serie A, Bundesliga, NBA, NFL, MLB, NHL, and plenty more. Use the sport switcher at the top to focus on one sport, and pick exactly which leagues you care about in Settings.
