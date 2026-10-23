@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <title>QuickScore - Settings</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div id="app" dir="ltr">
+    <h1>QuickScore — Settings</h1>
+
+    <section>
+      <h2>General</h2>
+
+      <label for="refresh-mode">Auto Refresh</label>
+      <select id="refresh-mode">
+        <option value="disabled">Disabled</option>
+        <option value="manual">Manual Only</option>
+        <option value="auto">Automatic</option>
+      </select>
+
+      <label for="refresh-interval">Refresh Interval (seconds)</label>
+      <input type="number" id="refresh-interval" min="10" step="10" />
+      <p class="hint">This only refreshes the popup/sidebar when it is actually open on the screen. Live match results are updated in the background all the time - see Notification Check Interval below.</p>
+
+      <label>Today's view also includes</label>
+      <div class="checkbox-row">
+        <label><input type="checkbox" id="show-late-night-yesterday" /> Yesterday's late-night matches</label>
+        <label><input type="checkbox" id="show-early-morning-tomorrow" /> Tomorrow's after-midnight matches</label>
+      </div>
+      <p class="hint">A match that started late last night, or one starting in the early hours tomorrow, still shows up under "Today" by default. Each of these adds an additional request per league every time you open Today's view - if your timezone rarely (or never) has matches like this, or you simply prefer less requests, uncheck either one.</p>
+    </section>
+
+    <section>
+      <h2>Notifications</h2>
+
+      <label>Notify me for</label>
+      <div class="checkbox-row">
+        <label><input type="checkbox" id="notify-scope-all" /> All live matches</label>
+        <label><input type="checkbox" id="notify-scope-favorites" /> Favorite teams</label>
+        <label><input type="checkbox" id="notify-scope-pinned" /> Pinned matches</label>
+      </div>
+      <p class="hint">"All live matches" takes priority if checked. Otherwise, only the matches you’ve marked as favorites and/or pinned (whichever you check) will trigger notifications.</p>
+
+      <label for="notify-display-mode">Show notifications as</label>
+      <select id="notify-display-mode">
+        <option value="badge_only">Toolbar icon only</option>
+        <option value="system_popup">Toolbar icon + system popup</option>
+      </select>
+      <p class="hint">You have to turn on "the system popup" explicitly - it is off by default. In both cases The toolbar icon count is always shown.</p>
+
+      <label for="notify-interval">Notification Check Interval (seconds)</label>
+      <input type="number" id="notify-interval" min="10" step="10" />
+      <p class="hint">This runs in the background at all times and is what keeps live match results up to date - not just notifications .</p>
+
+      <label>Notify me for these events</label>
+      <div class="checkbox-row">
+        <label><input type="checkbox" id="notify-event-start" /> Match start</label>
+        <label><input type="checkbox" id="notify-event-goal" /> Goals</label>
+        <label><input type="checkbox" id="notify-event-end" /> Match end</label>
+      </div>
+      <p class="hint">"Goals" doesn't apply to basketball or American football - those score too often for a popup per point to be useful, so you'll only ever get a popup for their start/end, never for individual scores.</p>
+    </section>
+
+    <section>
+      <h2>Leagues</h2>
+      <p class="hint">Search and pick the leagues you want to follow. Click the × on a chip to remove it.</p>
+
+      <div class="picker">
+        <div class="search-box">
+          <span class="search-icon" id="league-search-icon"></span>
+          <input type="text" id="league-search" placeholder="Search leagues (e.g. Premier League, NBA)…" autocomplete="off" />
+        </div>
+        <div class="suggestions hidden" id="league-suggestions"></div>
+      </div>
+
+      <div class="chips" id="selected-leagues"></div>
+    </section>
+
+    <section>
+      <h2>Favorite Teams</h2>
+      <p class="hint">Favorite teams always show at the top of the popup, no matter which sport or league is selected.</p>
+
+      <div class="picker">
+        <div class="search-box">
+          <span class="search-icon" id="team-search-icon"></span>
+          <input type="text" id="team-search" placeholder="Search teams (e.g. Real Madrid, Lakers)…" autocomplete="off" />
+        </div>
+        <div class="suggestions hidden" id="team-suggestions"></div>
+      </div>
+
+      <div class="chips" id="selected-teams"></div>
+    </section>
+
+    <section>
+      <h2>Backup</h2>
+      <p class="hint">Export everything (settings, favorite teams, leagues, pinned/muted matches) to a JSON file, or restore it on another browser/profile.</p>
+      <div id="backup-row">
+        <button id="export-btn" type="button">Export Settings</button>
+        <button id="import-btn" type="button">Import Settings…</button>
+        <input type="file" id="import-file-input" accept="application/json,.json" style="display:none" />
+      </div>
+      <span id="backup-status"></span>
+    </section>
+
+    <div id="save-row">
+      <button id="save-btn">Save Settings</button>
+      <span id="save-status"></span>
+    </div>
+  </div>
+
+  <script src="../vendor/browser-polyfill.js"></script>
+  <script src="../src/config.js"></script>
+  <script src="../src/storage.js"></script>
+  <script src="../src/leagues.js"></script>
+  <script src="../src/icons.js"></script>
+  <script src="../src/utils.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

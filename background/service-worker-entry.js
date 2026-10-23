@@ -1,0 +1,1 @@
+importScripts("../vendor/browser-polyfill.js", "../src/config.js", "../src/storage.js", "../src/leagues.js", "../src/api.js", "../src/provider.js", "../src/cache.js", "../src/time.js", "../src/utils.js", "../src/notifications.js", "./background.js");

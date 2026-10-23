@@ -1,0 +1,68 @@
+{
+  "manifest_version": 3,
+  "name": "QuickScore",
+  "version": "1.0",
+  "description": "Live scores for football, basketball (NBA), American football (NFL), baseball (MLB) and hockey (NHL). Notifications, favorite teams and leagues, pinned matches, and match details in a fast toolbar popup.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://site.api.espn.com/*",
+    "https://site.web.api.espn.com/*",
+    "https://sports.core.api.espn.com/*",
+    "https://a.espncdn.com/*"
+  ],
+  "background": {
+    "service_worker": "background/service-worker-entry.js",
+    "scripts": [
+      "vendor/browser-polyfill.js",
+      "src/config.js",
+      "src/storage.js",
+      "src/leagues.js",
+      "src/api.js",
+      "src/provider.js",
+      "src/cache.js",
+      "src/time.js",
+      "src/utils.js",
+      "src/notifications.js",
+      "background/background.js"
+    ]
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png",
+      "128": "icons/icon-128.png"
+    },
+    "default_title": "QuickScore",
+    "default_popup": "popup/popup.html"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "sidebar_action": {
+    "default_panel": "popup/popup.html",
+    "default_title": "QuickScore",
+    "default_icon": "icons/icon-32.png",
+    "open_at_install": false
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "quickscore@kargi.top",
+      "strict_min_version": "109.0",
+      "data_collection_permissions": { "required": ["none"] }
+    }
+  }
+}
